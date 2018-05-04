@@ -1,0 +1,29 @@
+# Sources:
+https://wiki.manjaro.org/index.php?title=Virtualbox
+https://www.itzgeek.com/how-tos/mini-howtos/how-to-install-virtualbox-extension.html
+
+# main file
+sudo pacman -S virtualbox
+
+# Host Module (compulsory)
+## Version must match kernel
+sudo pacman -S linux414-virtualbox-host-modules
+
+# Extension pack (optional, but recommended for full experience)
+## Download from https://www.virtualbox.org/wiki/Downloads
+### * Installing this way because installation inside VB gave errors last 20 times I tried
+sudo VBoxManage extpack install Oracle_VM_VirtualBox_Extension_Pack-5.2.10.vbox-extpack
+
+# Check the above installed correctly
+sudo VBoxManage list extpacks
+
+# Uninstall if needed
+## Also via Files>Preferences>Extensions
+sudo VBoxManage extpack uninstall "Oracle VM VirtualBox Extension Pack"
+
+# Add VB Module to kernel (compulsory before you can use VirtualBox) 
+sudo modprobe vboxdrv
+# or just reboot
+
+
+
