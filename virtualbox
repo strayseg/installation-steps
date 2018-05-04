@@ -24,6 +24,3 @@ sudo VBoxManage extpack uninstall "Oracle VM VirtualBox Extension Pack"
 # Add VB Module to kernel (compulsory before you can use VirtualBox) 
 sudo modprobe vboxdrv
 # or just reboot
-
-
-
