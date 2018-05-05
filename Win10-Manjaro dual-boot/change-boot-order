@@ -1,0 +1,18 @@
+# inside command prompt/powershell (with admin privileges)
+bcdedit /enum firmware
+
+# note down path to Manjaro grub. 
+This one -> \EFI\Manjaro\grubx64.efi
+
+# set Manjaro grub as default boot loader
+bcdedit /set "{bootmgr}" path "\EFI\Manjaro\grubx64.efi"
+
+# to set it back to windows, if needed
+bcdedit /set "{bootmgr}" path "\EFI\Microsoft\Boot\bootmgfw.efi"
+
+
+------
+Notes to self:
+
+- This applies if Manjaro grub & Windows bootmgr are on the same partition
+- What happens when they are on separate disks and "bcdedit /enum firmware" can't see the other disk??
