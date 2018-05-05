@@ -1,0 +1,54 @@
+Source: http://linuxbsdos.com/2015/09/05/how-to-delete-grub-files-from-a-boot-efi-partition-in-windows-10/
+* in case that page disappears at some point
+
+# inside Admin powershell/cmd
+diskpart
+
+list disk
+
+# select disk where windows is installed
+sel disk 0
+
+# list volumes (partitions)
+list vol
+
+# select the 100MB FAT32 volume 
+sel vol 2
+
+# assign a letter to it to make it accessible
+assign letter=D:
+
+exit
+
+---------------------------
+
+# navigate to EFI partition
+cd /d D:
+
+# check EFI directory is present
+ls
+
+# navigate into EFI
+cd EFI
+
+# list boot entries
+ls
+
+# remove unwanted entries
+rmdir /S ubuntu
+
+#confirm
+y
+
+# check entries that remain
+ls
+
+---------------------------
+
+# Unassign letter from EFI partition so you don't see it in 'Devices and Drives' and such
+
+disk part
+sel disk 0
+sel vol 2
+remove letter=D:
+exit
